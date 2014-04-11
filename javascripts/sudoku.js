@@ -9,7 +9,7 @@ var sudoku = {
 	array_user: [],//玩家输入的结果矩阵
     array_digged: [],//随机挖掉的坐标记录
 	complexity: 0.3,
-    complexity_upper: 0.8,
+    complexity_upper: 0.4,
 	tableId: "boxGrid",
 	
 	rndBg: function() {
@@ -159,7 +159,7 @@ var sudoku = {
 				var disable = '';
 				var val = '';
                 var complex = Math.random();
-                //if(complex > this.complexity && complex < this.complexity_upper)
+                if(complex > this.complexity && complex < this.complexity_upper)
                 {
                     disable = 'disabled';
                     val = this.array_init[i][j];
