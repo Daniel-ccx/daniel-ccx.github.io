@@ -170,7 +170,7 @@ var sudoku = {
 				var disable = '';
 				var val = '';
                 var complex = Math.random();
-                //if(complex > this.complexity && complex < this.complexity_upper)
+                if(complex > this.complexity && complex < this.complexity_upper)
                 {
                     disable = 'disabled';
                     val = this.array_init[i][j];
