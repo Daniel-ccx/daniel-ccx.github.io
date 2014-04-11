@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="pragma" content="no-cache" />
+		<title>HTML5 sudoku</title>
+        <link href="/stylesheets/common.css" rel="stylesheet" type="text/css"/>
+		
+	</head>
+	<body>
+		<div class="center">
+			<article><h1>数  独</h1></article>
+			<div class="center">
+				<table id="boxGrid" cellpadding="0" cellspacing="0">
+				<!---->
+				</table>
+				<div><input type="button" value="检查结果" id="chkBtn"/></div>
+			</div>
+		</div>
+		<script type="text/javascript" language="javascript" src="/javascripts/sudoku.js"></script>
+		<script type="text/javascript">
+		$('chkBtn').onclick = function(){
+			sudoku.chkResult();
+			//alert('a');
+		}
+		</script>
+	</body>
+</html>
