@@ -8,8 +8,8 @@ var sudoku = {
 	array_init: [],//程序初始的矩阵
 	array_user: [],//玩家输入的结果矩阵
     array_digged: [],//随机挖掉的坐标记录
-	complexity: 0.3,
-    complexity_upper: 0.4,
+	complexity: 0.2,
+    complexity_upper: 0.9,
 	tableId: "boxGrid",
 	
 	rndBg: function() {
