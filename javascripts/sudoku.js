@@ -49,47 +49,36 @@ var sudoku = {
 
         for(var n = 1; n < 10; n++)
         {
-            var setted = true;
             if(!this.chkRow(x, n))
-                setted = false;
+                continue;
 
-            if(setted)
+            if(!this.chkCol(x, y, n))
+                continue;
+
+            if(!this.chkUnit(x, y, n))
+                continue;
+
+            this.array_init[x][y] = n;
+            //console.log('(', x, y, ')', n, setted);
+            if(y < 8) //先设置列
             {
-                if(!this.chkCol(x, y, n))
-                    setted = false;
+                if(this.fillInit(x, y + 1))
+                    return true;
             }
-
-            if(setted)
+            else
             {
-                if(!this.chkUnit(x, y, n))
-                    setted = false;
-            }
-
-            if(setted == true)
-            {
-                this.array_init[x][y] = n;
-                console.log('(', x, y, ')', n, setted);
-                if(y < 8) //先设置列
+                y = 0;
+                //再设置行
+                if(x < 8)
                 {
-                    if(this.fillInit(x, y + 1))
+                    if(this.fillInit(x + 1, y))
                         return true;
                 }
                 else
-                {
-                	y = 0;
-                    //再设置行
-                    if(x < 8)
-                    {
-                        
-                        if(this.fillInit(x + 1, y))
-                            return true;
-                    }
-                    else
-                        return true;
-                }
+                    return true;
             }
             this.array_init[x][y] = 0;
-            console.log('un:(', x, y, ')', n, setted);
+            //console.log('un:(', x, y, ')', n, setted);
         }
 
 		return false;
@@ -170,7 +159,7 @@ var sudoku = {
 				var disable = '';
 				var val = '';
                 var complex = Math.random();
-                if(complex > this.complexity && complex < this.complexity_upper)
+                //if(complex > this.complexity && complex < this.complexity_upper)
                 {
                     disable = 'disabled';
                     val = this.array_init[i][j];
