@@ -13,7 +13,8 @@ var sudoku = {
 	tableId: "boxGrid",
 	
 	rndBg: function() {
-		var bg_num = Math.ceil(Math.random() + Math.random());
+		//var bg_num = Math.ceil(Math.random() + Math.random());
+        var bg_num = 2;
 
 		$(this.tableId).className = "bg_" + bg_num;
 	},
@@ -59,7 +60,6 @@ var sudoku = {
                 continue;
 
             this.array_init[x][y] = n;
-            //console.log('(', x, y, ')', n, setted);
             if(y < 8) //先设置列
             {
                 if(this.fillInit(x, y + 1))
@@ -80,7 +80,6 @@ var sudoku = {
                     return true;
             }
             this.array_init[x][y] = 0;
-            //console.log('un:(', x, y, ')', n, setted);
         }
 
 		return false;
@@ -162,11 +161,33 @@ var sudoku = {
 					cls += "boldRight";
                 trEle += cls + "'";
 
-				trEle += ">";
+                var iptStyle = " style='";
+                if(i == 0 && j == 0)
+                    iptStyle += 'border-top-left-radius: 8px;';
+                else if(i == 0 && j == 8)
+                    iptStyle += 'border-top-right-radius: 8px;';
+                else if(i == 8 && j == 0)
+                    iptStyle += 'border-bottom-left-radius: 8px;';
+                else if(i == 8 && j == 8)
+                    iptStyle += 'border-bottom-right-radius: 8px;';
+
+                if(i == 0)
+                    iptStyle += 'border-top: 0px;';
+                if(i == 8)
+                    iptStyle += 'border-bottom: 0px;';
+
+                if(j == 0)
+                    iptStyle += 'border-left: 0px;';
+                if(j == 8)
+                    iptStyle += 'border-right: 0px;';
+                iptStyle += "'";
+
+				trEle += iptStyle + ">";
+
 				var disable = '';
 				var val = '';
                 var complex = Math.random();
-                //if(complex > this.complexity && complex < this.complexity_upper)
+                if(complex > this.complexity && complex < this.complexity_upper)
                 {
                     disable = 'disabled';
                     val = this.array_init[i][j];
@@ -197,9 +218,7 @@ var sudoku = {
         for(var i = 0; i < 9; i++)
         {
             if(tmp_arr[i][y] == tmp)
-            {
                 return false;
-            }
         }
 
 		var d_x = this.getDistrict(x);
@@ -209,10 +228,7 @@ var sudoku = {
             for(var j = 0; j < 3; j++)
             {
                 if(tmp_arr[d_x+i][d_y+j] == tmp)
-                {
-                    tmp_arr[x][y] = tmp;
                     return false;
-                }
             }
         }
         return true;
