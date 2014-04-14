@@ -8,8 +8,8 @@ var sudoku = {
 	array_init: [],//程序初始的矩阵
 	array_user: [],//玩家输入的结果矩阵
     array_digged: [],//随机挖掉的坐标记录
-	complexity: 0.2,
-    complexity_upper: 0.9,
+	complexity: 0.3,
+    complexity_upper: 0.8,
 	tableId: "boxGrid",
 	
 	rndBg: function() {
@@ -67,12 +67,14 @@ var sudoku = {
             }
             else
             {
-                y = 0;
                 //再设置行
                 if(x < 8)
                 {
+                    tmp = y;
+                    y = 0;
                     if(this.fillInit(x + 1, y))
                         return true;
+                    y = tmp;
                 }
                 else
                     return true;
@@ -151,15 +153,20 @@ var sudoku = {
 			for(var j = 0; j < 9; j++)
 			{
 				trEle += "<td ";
+                cls = "class='";
+                if(i == j || (i+j == 8))
+                    cls += 'x ';
+
 				//纵向
 				if(j < 8 && (j+1)%3 == 0 )
-					trEle += "class='boldRight'";
+					cls += "boldRight";
+                trEle += cls + "'";
 
 				trEle += ">";
 				var disable = '';
 				var val = '';
                 var complex = Math.random();
-                if(complex > this.complexity && complex < this.complexity_upper)
+                //if(complex > this.complexity && complex < this.complexity_upper)
                 {
                     disable = 'disabled';
                     val = this.array_init[i][j];
