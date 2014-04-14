@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="pragma" content="no-cache" />
+		<title>X-SUDOKU</title>
+        <link href="/stylesheets/common.css" rel="stylesheet" type="text/css"/>
+		
+	</head>
+	<body>
+		<div class="center">
+			<article><h1>X数独</h1></article>
+			<div class="center">
+				<table id="boxGrid" cellpadding="0" cellspacing="0">
+				<!---->
+				</table>
+                <div class="block">
+                    <input class="chkbtn" type="button" value="检查结果" id="chkBtn"/>  
+                    <input class="chkbtn" type="button" value="下一局" id="nextGame"/>  
+                    <input class="chkbtn" type="button" value="数独" id="goSudoku"/>  
+                </div>
+			</div>
+		</div>
+		<script type="text/javascript" language="javascript" src="/javascripts/sudoku.x.js"></script>
+		<script type="text/javascript">
+		$('chkBtn').onclick = function(){
+			sudoku.chkResult();
+		}
+
+        $('nextGame').onclick = function() {
+            window.location.reload();
+        }
+
+        $('goSudoku').onclick = function() {
+            window.location.href = '/sudoku.html';
+        }
+		</script>
+	</body>
+</html>

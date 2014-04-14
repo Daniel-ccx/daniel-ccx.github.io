@@ -2,23 +2,27 @@ body {
     font-weight: bold; font-family:宋体;
     font-size:16px;
 }
-.bg_1{background: url(/images/bg_blue.png) no-repeat; background-size:cover; }
+.bg_1{background: url(../bg_blue.png) no-repeat; background-size:cover; }
 
-.bg_2{background: url(/images/bg_light_blue.png) no-repeat; background-size: cover;}
+.bg_2{background: url(../bg_light_blue.png) no-repeat; background-size: cover;}
 
 .center {
     width: 100%;
     margin: 0px auto;
     text-align: center;
 }
+.x {
+	background-color: #eff;
+}
 
 #boxGrid {
     width:540px;
     height:540px;
     margin: 0px auto;
-    border:6px solid #B5DFB5;
+    border: 0px solid #B5c345;
     border-collapse: collapse;
     border-radius:8px 8px;
+    box-shadow: -6px 0px 6px #B5c345, 0 -6px 6px #B5c345, 0 6px 6px #B5c345, 6px 0 6px #B5c345;
 }
 
 #boxGrid tr {
@@ -54,4 +58,19 @@ body {
 
 #boxGrid tr.boldBottom {
     border-bottom: 3px solid #B5c345;
+}
+
+div.block {
+    height: 100px;
+    padding: 20px 10px;
+}
+div.block input.chkbtn {
+    font-size: 16px;
+    font-weight: bold;
+    color: #B5c345;
+    cursor: pointer;
+    width: 90px;
+    padding: 10px 5px;
+    border: 0px;
+    /*box-shadow:  -6px 0px 6px green, 0 -6px 6px blue, 0 6px 6px red, 6px 0 6px yellow;*/
 }
