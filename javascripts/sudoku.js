@@ -1,15 +1,9 @@
-function $(id) {
-	return document.getElementById(id);
-}
-
 //生成数独矩阵使用挖洞算法
-var counter = 0;
 var sudoku = {
 	array_init: [],//程序初始的矩阵
 	array_user: [],//玩家输入的结果矩阵
     array_digged: [],//随机挖掉的坐标记录
-	complexity: 0.3,
-    complexity_upper: 0.8,
+	complexity: 0.1,
 	tableId: "boxGrid",
 	
 	rndBg: function() {
@@ -182,13 +176,15 @@ var sudoku = {
 
 				trEle += iptStyle + ">";
 
-				var disable = '';
-				var val = '';
+                var disable = 'disabled';
+                var val = this.array_init[i][j];
                 var complex = Math.random();
-                if(complex > this.complexity && complex < this.complexity_upper)
+                var complex_upper = window.localStorage.getItem('complex_upper');
+
+                if(complex > this.complexity && complex < complex_upper)
                 {
-                    disable = 'disabled';
-                    val = this.array_init[i][j];
+                    disable = '';
+                    val = '';
                     this.array_digged.push(i + ',' + j);
                 }
 				trEle += "<input type='text' value='" + val + "' " + disable + " maxlength=1 id='g_" + i + j + "'/>";
